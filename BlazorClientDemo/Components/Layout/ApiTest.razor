@@ -1,0 +1,23 @@
+﻿@page "/apitest"
+@rendermode InteractiveServer
+
+@using BlazorClientDemo.Services
+@inject ApiClient Api
+
+<h3>API Test</h3>
+
+<button class="btn btn-primary" @onclick="CallApi">Ping API</button>
+
+@if (!string.IsNullOrEmpty(Result))
+{
+    <pre>@Result</pre>
+}
+
+@code {
+    private string Result;
+
+    private async Task CallApi()
+    {
+        Result = await Api.PingAsync();
+    }
+}
