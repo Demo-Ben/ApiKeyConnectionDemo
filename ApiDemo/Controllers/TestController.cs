@@ -10,7 +10,7 @@ namespace ApiDemo.Controllers
         [HttpGet(Name = "Ping")]
         public IActionResult Ping()
         {
-            return Ok(new { Message = "API is alive", Time = DateTime.Now });
+            return Ok(new { Message = "API Key has found.", Time = DateTime.Now });
         }
     }
 }
