@@ -2,7 +2,7 @@
 @rendermode InteractiveServer
 
 @using BlazorClientDemo.Services
-@inject ApiClient Api
+@inject ApiClient _apiClient
 
 <h3>API Test</h3>
 
@@ -18,6 +18,6 @@
 
     private async Task CallApi()
     {
-        Result = await Api.PingAsync();
+        Result = await _apiClient.PingAsync();
     }
 }

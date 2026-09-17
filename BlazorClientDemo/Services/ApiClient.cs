@@ -4,15 +4,15 @@ namespace BlazorClientDemo.Services
 {
     public class ApiClient
     {
-        private readonly HttpClient _http;
+        private readonly HttpClient _httpClient;
 
         public ApiClient(HttpClient http)
         {
-            _http = http;
+            _httpClient = http;
             // Attach API Key header for every request
-            if (!_http.DefaultRequestHeaders.Contains("X-API-KEY"))
+            if (!_httpClient.DefaultRequestHeaders.Contains("X-API-KEY"))
             {
-                _http.DefaultRequestHeaders.Add("X-API-KEY", "SuperSecretKey123");
+                _httpClient.DefaultRequestHeaders.Add("X-API-KEY", "SuperSecretKey123");
             }
 
             //GET http://localhost:5000/api/test/ping
@@ -25,7 +25,7 @@ namespace BlazorClientDemo.Services
             try
             {
                 // Always use leading slash to avoid URL concatenation issues
-                var response = await _http.GetAsync("/api/test/ping");
+                var response = await _httpClient.GetAsync("/api/test/ping");
 
                 // Throw if not success (401/403 will be caught below)
                 response.EnsureSuccessStatusCode();
