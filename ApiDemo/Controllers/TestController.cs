@@ -7,7 +7,7 @@ namespace ApiDemo.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        [HttpGet(Name = "ping")]
+        [HttpGet(Name = "Ping")]
         public IActionResult Ping()
         {
             return Ok(new { Message = "API is alive", Time = DateTime.Now });
