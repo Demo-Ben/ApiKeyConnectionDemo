@@ -3,27 +3,25 @@ using BlazorClientDemo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents();
 
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.Configure(builder.Configuration.GetSection("Kestrel"));
 });
 
-// Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
-
 
 var apiUrl = builder.Configuration["ApiSettings:BaseUrl"];
 builder.Services.AddScoped<ApiClient>(sp =>
-{
-    var client = new HttpClient
-    {
-        BaseAddress = new Uri(apiUrl)
-    };
-    return new ApiClient(client);
-});
-
+                {
+                    var client = new HttpClient
+                    {
+                        BaseAddress = new Uri(apiUrl)
+                    };
+                    return new ApiClient(client);
+                });
 
 var app = builder.Build();
 
@@ -35,7 +33,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//app.UseCors("AllowBlazor");   // <--- IMPORTANT
 
 app.UseHttpsRedirection();
 

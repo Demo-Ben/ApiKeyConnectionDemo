@@ -9,12 +9,8 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 
-// Add services to the container.
 builder.Services.AddControllers();
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-
 
 //builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
@@ -65,14 +61,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseHttpsRedirection();
+
 // CORS must be BEFORE middleware
 app.UseCors("AllowBlazor");   // <--- IMPORTANT
-
 
 //Register Middleware in
 app.UseMiddleware<ApiKeyMiddleware>();
 
-//app.UseHttpsRedirection();
 //app.UseAuthorization();
 
 app.MapControllers();

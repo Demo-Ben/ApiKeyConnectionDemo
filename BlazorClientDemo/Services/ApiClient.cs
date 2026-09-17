@@ -12,11 +12,11 @@ namespace BlazorClientDemo.Services
             // Attach API Key header for every request
             if (!_httpClient.DefaultRequestHeaders.Contains("X-API-KEY"))
             {
-                _httpClient.DefaultRequestHeaders.Add("X-API-KEY", "SuperSecretKey123");
+                _httpClient.DefaultRequestHeaders.Add("X-API-KEY", "SuperSecretApiKey-12345");
             }
 
             //GET http://localhost:5000/api/test/ping
-            //Header: X - API - KEY: SuperSecretKey123
+            //Header: X - API - KEY: SuperSecretApiKey-12345
         }
 
         // Ping API
