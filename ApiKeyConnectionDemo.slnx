@@ -1,5 +1,4 @@
 <Solution>
-  <Project Path="ApiDemo/ApiDemo.csproj" />
   <Project Path="ApiKey.Middleware.Service/ApiKey.Middleware.Service.csproj" Id="a1bc66fb-ac93-460a-b597-69b93edeec57" />
   <Project Path="ApiKey.Shared/ApiKey.Shared.csproj" Id="76730585-5157-4719-a3b6-118563ba8d34" />
   <Project Path="BlazorClientDemo/BlazorClientDemo.csproj" />
