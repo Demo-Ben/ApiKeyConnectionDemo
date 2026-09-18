@@ -7,10 +7,11 @@ namespace ApiDemo.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        [HttpGet(Name = "Ping")]
+        [HttpGet("Ping", Name = "Ping")]
         public IActionResult Ping()
         {
-            return Ok(new { Message = "API Key has found.", Time = DateTime.Now });
+            //return Ok(new { Message = "API Key has found.", Time = DateTime.Now });
+            return Ok("API Key has found.");
         }
     }
 }

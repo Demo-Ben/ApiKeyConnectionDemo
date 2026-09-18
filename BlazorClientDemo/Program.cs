@@ -14,13 +14,14 @@ builder.WebHost.ConfigureKestrel(options =>
 
 
 var apiUrl = builder.Configuration["ApiSettings:BaseUrl"];
-builder.Services.AddScoped<ApiClient>(sp =>
+
+builder.Services.AddScoped<ApiTestClient>(sp =>
                 {
                     var client = new HttpClient
                     {
                         BaseAddress = new Uri(apiUrl)
                     };
-                    return new ApiClient(client);
+                    return new ApiTestClient(client);
                 });
 
 var app = builder.Build();
