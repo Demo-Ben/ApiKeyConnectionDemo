@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ApiKey.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiDemo.Controllers
@@ -7,11 +7,11 @@ namespace ApiDemo.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        [HttpGet("Ping", Name = "Ping")]
+        [HttpGet]
         public IActionResult Ping()
         {
             //return Ok(new { Message = "API Key has found.", Time = DateTime.Now });
-            return Ok("API Key has found.");
+            return Ok(new PingResponseDto { Message = "API Key has found.", Time = DateTime.Now });
         }
     }
 }

@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ApiKey.Shared\ApiKey.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

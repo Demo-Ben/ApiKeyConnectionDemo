@@ -2,19 +2,21 @@
 @rendermode InteractiveServer
 
 @using BlazorClientDemo.Services
+@using ApiKey.Shared;
+
 @inject ApiTestClient _client
 
 <h3>API Test</h3>
 
 <button class="btn btn-primary" @onclick="CallApi">Ping API</button>
 
-@if (!string.IsNullOrEmpty(Result))
+@if (Result != null)
 {
     <pre>@Result</pre>
 }
 
 @code {
-    private string Result;
+    private PingResponseDto Result;
 
     private async Task CallApi()
     {

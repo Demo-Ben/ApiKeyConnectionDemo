@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
+﻿using ApiKey.Shared;
 
 namespace BlazorClientDemo.Services
 {
@@ -17,28 +17,29 @@ namespace BlazorClientDemo.Services
             }
         }
 
-        // Ping API
-        public async Task<string> PingAsync()
+        public async Task<PingResponseDto> PingAsync()
         {
             try
             {
-                // Always use leading slash to avoid URL concatenation issues
-                var response = await _httpClient.GetAsync("/Test/Ping");
+                return await _httpClient.GetFromJsonAsync<PingResponseDto>("Test");
 
-                // Throw if not success (401/403 will be caught below)
-                response.EnsureSuccessStatusCode();
+                //// Always use leading slash to avoid URL concatenation issues
+                //var response = await _httpClient.GetAsync("/Test/Ping");
 
-                // Read JSON or text response
-                return await response.Content.ReadAsStringAsync();
+                //// Throw if not success (401/403 will be caught below)
+                //response.EnsureSuccessStatusCode();
+
+                //// Read JSON or text response
+                //return await response.Content.ReadAsStringAsync();
             }
             catch (HttpRequestException ex)
             {
                 // Return clean error message for UI display
-                return $"HTTP Error: {ex.Message}";
+                return new PingResponseDto { Message = $"HTTP Error: {ex.Message}" };
             }
             catch (Exception ex)
             {
-                return $"Unexpected Error: {ex.Message}";
+                return new PingResponseDto { Message = $"Unexpected Error: {ex.Message}" };
             }
         }
     }

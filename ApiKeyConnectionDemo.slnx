@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="ApiDemo/ApiDemo.csproj" />
+  <Project Path="ApiKey.Shared/ApiKey.Shared.csproj" Id="76730585-5157-4719-a3b6-118563ba8d34" />
   <Project Path="BlazorClientDemo/BlazorClientDemo.csproj" />
 </Solution>
